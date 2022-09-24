@@ -19,12 +19,11 @@ const Profile = () => {
             <aside className="left">
                 <div className="left__upper">
                     <h1 className="heading-primary">
-                        Lorem <span className="highlight">ipsum</span> dolor sit amet. Consectetur{" "}
-                        <span className="highlight">adipisicing</span> elit. Ex, voluptate.
+                        Hi <span className="highlight">Christian!</span> Welcome to Xavier University{" "}
+                        <span className="highlight"> Check </span> our website university.
                     </h1>
                     <p>
-                        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Molestiae saepe
-                        pariatur cumque vero, architecto corporis?
+                        If you have any questions, kindly send us a feedback.
                     </p>
                 </div>
 
