@@ -10,8 +10,22 @@ import { useDate } from "../../hooks/useDate.hook";
 import { useAuthContext } from "../../store/AuthContext";
 
 import "./Resources.styles.scss";
+import DataTable from "../../components/DataTable/DataTable.component";
+import ResourcesTable from "./ResourcesTable/ResourcesTable.component";
 
 const DUMMY_LOGS = [
+    {
+        id: uuidv4(),
+        date: "September 24",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:59 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
     {
         id: uuidv4(),
         date: "September 23",
@@ -24,6 +38,7 @@ const DUMMY_LOGS = [
         timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
         timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
     },
+
     {
         id: uuidv4(),
         date: "September 22",
@@ -50,10 +65,142 @@ const DUMMY_LOGS = [
     },
     {
         id: uuidv4(),
-        date: "September 20",
+        date: "September 19",
+        day: "Friday",
+        duration: "123",
+        status: "late",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 18",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 17",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 16",
+        day: "Friday",
+        duration: "123",
+        status: "late",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 15",
         day: "Friday",
         duration: "123",
         status: "bad",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 14",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 13",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 12",
+        day: "Friday",
+        duration: "123",
+        status: "late",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 11",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 9",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 8",
+        day: "Friday",
+        duration: "123",
+        status: "good",
+        hours: 7,
+        minutes: 42,
+        displayTime: "11:42 PM",
+        timeIn: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+        timeOut: { hours: 23, minutes: 44, displayTime: "11:44 PM" },
+    },
+    {
+        id: uuidv4(),
+        date: "September 7",
+        day: "Friday",
+        duration: "123",
+        status: "good",
         hours: 7,
         minutes: 42,
         displayTime: "11:42 PM",
@@ -66,8 +213,6 @@ const Resources = () => {
     const { user, todaysLog, setTodaysLog } = useAuthContext();
     const { date, time: displayTime, wish } = useDate();
 
-    console.log(todaysLog);
-
     const [logs, setLogs] = useState(DUMMY_LOGS);
 
     const [message, setMessage] = useState({});
@@ -78,8 +223,6 @@ const Resources = () => {
 
     const hasTimeIn = Object.keys(timeIn).length > 0 || todaysLog.timeIn;
     const hasTimeOut = Object.keys(timeOut).length > 0 || todaysLog.timeOut;
-
-    console.log(hasTimeIn, hasTimeOut);
 
     let duration = "N/A";
     let logStatus = "today";
@@ -225,42 +368,15 @@ const Resources = () => {
                 </div>
             </div>
 
-            <div className="message-contai">
-                <p className={`message ${message.status} ${showMessage ? "show" : ""}`}>
-                    {message.content}
-                </p>
-            </div>
+            <p className={`message ${message.status} ${showMessage ? "show" : ""}`}>
+                {message.content}
+            </p>
 
-            <table className="data-logs">
-                <thead>
-                    <tr>
-                        <th>No.</th>
-                        <th>Date</th>
-                        <th>Day</th>
-                        <th>Time In</th>
-                        <th>Time Out</th>
-                        <th>Status</th>
-                        <th>Duration</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {logs.map((log, index) => {
-                        const { date, day, timeIn, timeOut, status, duration } = log;
-
-                        return (
-                            <tr key={date}>
-                                <td>{index + 1}</td>
-                                <td>{date}</td>
-                                <td>{day}</td>
-                                <td>{timeIn.displayTime}</td>
-                                <td>{timeOut.displayTime}</td>
-                                <td className={`status ${status}`}>{status}</td>
-                                <td>{duration}</td>
-                            </tr>
-                        );
-                    })}
-                </tbody>
-            </table>
+            <DataTable
+                logs={logs}
+                // onFilterBySearch={filterBySearchHandler}
+                Table={ResourcesTable}
+            />
         </section>
     );
 };
