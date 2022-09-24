@@ -9,18 +9,17 @@ import { useAuthContext } from "../../store/AuthContext";
 
 const Navigation = () => {
     const { user, isLoggedIn } = useAuthContext();
+    const { name, email, address, phone } = user;
 
     const dropdownRef = useRef(null);
     const buttonRef = useRef(null);
     const [showDropdown, setShowDropdown] = useState(false);
 
     const toggleDropdownHandler = e => {
-        console.log(e.target);
         setShowDropdown(prevState => !prevState);
     };
 
     const logoutHandler = () => {
-        console.log("log out clicked");
         Navigate("/");
     };
 
@@ -50,7 +49,7 @@ const Navigation = () => {
 
                 <ul>
                     <li>
-                        <Link to="" className="nav__link">
+                        <Link to="resources" className="nav__link">
                             Resources
                         </Link>
                     </li>
@@ -75,7 +74,7 @@ const Navigation = () => {
                                 ref={buttonRef}
                                 onClick={toggleDropdownHandler}
                             >
-                                {user.name}
+                                {name || "N/A"}
                                 <BiChevronDown className="user__dropdown-icon" />
                             </button>
 

@@ -4,17 +4,15 @@ import { FaUserAlt } from "react-icons/fa";
 import { MdOutlineEmail } from "react-icons/md";
 import { MdCall } from "react-icons/md";
 import { MdLocationOn } from "react-icons/md";
-import { AiOutlineFieldTime } from "react-icons/ai";
 
 import timelineSVG from "../../assets/timeline.svg";
 
 import "./Profile.styles.scss";
-import { useDate } from "../../hooks/useDate.hook";
 import { useAuthContext } from "../../store/AuthContext";
 
 const Profile = () => {
     const { user } = useAuthContext();
-    const { date, time, wish } = useDate();
+    const { name, email, address, phone } = user;
 
     return (
         <section className="profile">
@@ -37,7 +35,7 @@ const Profile = () => {
                         </div>
                         <div className="control__texts">
                             <p className="label">Name</p>
-                            <div className="value">{user.name}</div>
+                            <div className="value">{name || "N/A"}</div>
                         </div>
                     </div>
 
@@ -47,7 +45,7 @@ const Profile = () => {
                         </div>
                         <div className="control__texts">
                             <p className="label">Email</p>
-                            <div className="value">johndoe@school.edu</div>
+                            <div className="value">{email || "N/A"}</div>
                         </div>
                     </div>
 
@@ -57,7 +55,7 @@ const Profile = () => {
                         </div>
                         <div className="control__texts">
                             <p className="label">Address</p>
-                            <div className="value">Lorem ipsum dolor sit amet.</div>
+                            <div className="value">{address || "N/A"}</div>
                         </div>
                     </div>
 
@@ -67,26 +65,8 @@ const Profile = () => {
                         </div>
                         <div className="control__texts">
                             <p className="label">Phone no.</p>
-                            <div className="value">+123 456 789</div>
+                            <div className="value">{phone || "N/A"}</div>
                         </div>
-                    </div>
-                </div>
-
-                <div className="left__actions">
-                    <div className="heading">
-                        <p className="wish">
-                            {wish} <span className="highlight">{user.name}.</span>
-                        </p>
-                        <div className="date">
-                            <p>
-                                <AiOutlineFieldTime /> {time}
-                            </p>
-                            <p>{date}</p>
-                        </div>
-                    </div>
-                    <div className="buttons">
-                        <button className="filled"> In</button>
-                        <button> Out</button>
                     </div>
                 </div>
             </aside>
