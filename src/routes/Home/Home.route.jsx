@@ -33,7 +33,7 @@ const Home = () => {
             <div className="left__heading">
                 <h1>Hey there!</h1>
                 <p>
-                    Time Chaser is a QR-code based time tracking website that keeps track of your
+                    Time Chaser is a QR code-based time tracking website that keeps track of your
                     own schedule and advocates for a healthier work-life balance for teachers. 
                 </p>
             </div>
