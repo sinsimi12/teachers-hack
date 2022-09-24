@@ -33,11 +33,7 @@ def placeholder():
         id =  request.args.get('userId')
         timeIn =  request.args.get('timeIn')
         timeOut =  request.args.get('timeOut')
-        data = request.data
-        print(id)
-        print(timeIn)
-        print(timeOut)
-        print(data)
+       
         createdAt = now.strftime("%d/%m/%Y %H:%M:%S")
         updatedAt = now.strftime("%d/%m/%Y %H:%M:%S")
         if timeIn is not None and timeOut is not None:
@@ -66,21 +62,16 @@ def get_logs_by_id(userId):
     return { 'response': response }
 
 # Get secret phase
-@app.route('/phrase/<school>', methods = ['POST'])
-def phrase_by_school(school):
+@app.route('/phrase', methods = ["GET","POST"])
+def phrase_by_school():
     if flask.request.method == "POST":
-        results = db.passphrase_by_school(school, conn)
+        school =  request.args.get('school')
 
-        response = []
-        for result in results:
-            test = {
-                'phrase': result[0],
-                'phraseId': result[1],
-            }
+        results = db.passphrase_by_school(school=school, conn=conn)
+        print(results)
 
-            response.append(test)
-
-        return { 'response': response }
+       
+        return results
 
 # 
 @app.route('/teachers/<school>')

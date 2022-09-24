@@ -113,7 +113,7 @@ def generate_phrase(conn, school, phrase, createdAt, updatedAt):
 def passphrase_by_school(school, conn):
     with conn.cursor() as cur:
         cur.execute(
-              f"SELECT phrase, id FROM phrase WHERE (school = '{school}') ")
+              f"SELECT phrase, id FROM phrase WHERE school = '{school}'")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
@@ -133,4 +133,4 @@ def passphrase_by_school(school, conn):
 # generate_phrase(conn, 'De La Salle - College of Saint Benilde', 'test', '2022-03-24 04:05:06', '2022-03-24 04:05:06')
 # generate_phrase(conn=conn, school="De La Salle College of Saint Benilde", phrase="test", createdAt=""2022-03-24 04:05:06"", updatedAt="2022-03-24 04:05:06")
 
-passphrase_by_school(school='De La Salle - College of Saint Benilde', conn=conn)
+# passphrase_by_school(school='De La Salle - College of Saint Benilde', conn=conn)
