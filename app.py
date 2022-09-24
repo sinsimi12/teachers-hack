@@ -26,7 +26,7 @@ def login_user():
     return
 
 # Create log route
-@app.route("/api/activity", methods=["GET", "POST"])
+@app.route("/api/activity", methods=["POST", "GET"])
 def placeholder():
     if flask.request.method == "POST":
         now = datetime.now()
@@ -62,7 +62,7 @@ def get_logs_by_id(userId):
     return { 'response': response }
 
 # Get secret phase
-@app.route('/phrase', methods = ["GET","POST"])
+@app.route('/phrase', methods = ["POST", "GET"])
 def phrase_by_school():
     if flask.request.method == "POST":
         school =  request.args.get('school')
