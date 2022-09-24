@@ -99,8 +99,29 @@ def select_logs_by_id(userId, conn):
         return result
 
 
+def generate_phrase(conn, school, phrase, createdAt, updatedAt):
+    with conn.cursor() as cur:
+        cur.execute(
+            f"INSERT INTO phrase (school, phrase, createdAt, updatedAt) VALUES ('{school}', '{phrase}', '{createdAt}', '{updatedAt}')")
+      
+        logging.debug("user_info(): status message: %s",
+                      cur.statusmessage)
 
- 
+    conn.commit() 
+
+
+def passphrase_by_school(school, conn):
+    with conn.cursor() as cur:
+        cur.execute(
+              f"SELECT phrase, id FROM phrase WHERE (school = '{school}') ")
+      
+        logging.debug("user_info(): status message: %s",
+                      cur.statusmessage)
+
+        result = cur.fetchall()
+    
+        conn.commit() 
+        print(result)
 
 
 # school(conn)
@@ -108,6 +129,8 @@ def select_logs_by_id(userId, conn):
 # user_info(conn)
 # phrase(conn)
 # token(conn)
-
 # create_logs(timeIn='2022-03-24 04:05:06',timeOut='2022-03-24 04:05:08', userId=1 , createdAt='2022-03-24 04:05:08', updatedAt='2022-03-24 04:05:08', conn=conn)
-select_logs_by_id(userId=1, conn=conn)
+# generate_phrase(conn, 'De La Salle - College of Saint Benilde', 'test', '2022-03-24 04:05:06', '2022-03-24 04:05:06')
+# generate_phrase(conn=conn, school="De La Salle College of Saint Benilde", phrase="test", createdAt=""2022-03-24 04:05:06"", updatedAt="2022-03-24 04:05:06")
+
+passphrase_by_school(school='De La Salle - College of Saint Benilde', conn=conn)
