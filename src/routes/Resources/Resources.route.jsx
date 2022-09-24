@@ -63,8 +63,10 @@ const DUMMY_LOGS = [
 ];
 
 const Resources = () => {
-    const { user } = useAuthContext();
+    const { user, todaysLog, setTodaysLog } = useAuthContext();
     const { date, time: displayTime, wish } = useDate();
+
+    console.log(todaysLog);
 
     const [logs, setLogs] = useState(DUMMY_LOGS);
 
@@ -74,8 +76,10 @@ const Resources = () => {
     const [timeIn, setTimeIn] = useState({});
     const [timeOut, setTimeOut] = useState({});
 
-    const hasTimeIn = Object.keys(timeIn).length > 0;
-    const hasTimeOut = Object.keys(timeOut).length > 0;
+    const hasTimeIn = Object.keys(timeIn).length > 0 || todaysLog.timeIn;
+    const hasTimeOut = Object.keys(timeOut).length > 0 || todaysLog.timeOut;
+
+    console.log(hasTimeIn, hasTimeOut);
 
     let duration = "N/A";
     let logStatus = "today";
@@ -99,6 +103,12 @@ const Resources = () => {
             copy[0].timeIn = { ...timeIn, displayTime };
             return copy;
         });
+
+        const logsCopy = [...logs];
+        logsCopy[0].timeIn = { ...timeIn, displayTime };
+        const currentLog = logsCopy[0];
+
+        setTodaysLog(currentLog);
     };
 
     const timeOutHandler = () => {
@@ -109,7 +119,7 @@ const Resources = () => {
         const timeOut = { hours: currentHour, minutes: currentMinutes };
 
         setTimeOut(timeOut);
-        setMessage({ status: "success", content: "Time out successful." });
+        setMessage({ status: "success", content: "Time out successfully." });
 
         // ! currentMinutes here is also know as outMinutes
 
@@ -138,32 +148,49 @@ const Resources = () => {
             copy[0].duration = duration;
             return copy;
         });
+
+        const logsCopy = [...logs];
+        logsCopy[0].timeIn = { ...timeIn, displayTime };
+        const currentLog = logsCopy[0];
+
+        setTodaysLog(currentLog);
     };
 
     useEffect(() => {
-        // set today's date basic info for the log
-        const today = new Date();
-        const dayWeek = today.toLocaleDateString("en", { weekday: "long" });
-        const dateNum = today.getDate();
-        const month = today.toLocaleDateString("en", {
-            month: "long",
-        });
+        if (Object.keys(todaysLog).length === 0) {
+            // set today's date basic info for the log
+            const today = new Date();
+            const dayWeek = today.toLocaleDateString("en", { weekday: "long" });
+            const dateNum = today.getDate();
+            const month = today.toLocaleDateString("en", {
+                month: "long",
+            });
 
-        const todaysLog = {
-            date: `${month} ${dateNum}`,
-            day: dayWeek,
-            timeIn: "",
-            timeOut: "",
-            status: logStatus,
-            duration,
-        };
+            const currentLog = {
+                date: `${month} ${dateNum}`,
+                day: dayWeek,
+                timeIn: "",
+                timeOut: "",
+                status: logStatus,
+                duration,
+            };
 
-        // setLogs(prevState => [...prevState, todaysLog]);
-        setLogs(prevState => {
-            const copy = [...prevState];
-            copy.unshift(todaysLog);
-            return copy;
-        });
+            // setLogs(prevState => [...prevState, todaysLog]);
+            setLogs(prevState => {
+                const copy = [...prevState];
+                copy.unshift(currentLog);
+                return copy;
+            });
+
+            setTodaysLog(currentLog);
+        } else {
+            setLogs(prevState => {
+                const copy = [...prevState];
+                copy.unshift(todaysLog);
+                console.log(copy);
+                return copy;
+            });
+        }
     }, []);
 
     useEffect(() => {
@@ -188,7 +215,7 @@ const Resources = () => {
                     </div>
                 </div>
                 <div className="actions">
-                    <button className="filled" disabled={hasTimeIn} onClick={timeInHandler}>
+                    <button disabled={hasTimeIn} onClick={timeInHandler}>
                         In
                     </button>
 
