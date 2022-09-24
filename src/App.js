@@ -5,6 +5,7 @@ import Navigation from "./routes/Navigation/Navigation.route";
 import Home from "./routes/Home/Home.route";
 import Profile from "./routes/Profile/Profile.route";
 import Map from "./routes/Map/Map.route";
+import Resources from "./routes/Resources/Resources.route";
 import PageNotFound from "./routes/404/PageNotFound.route";
 
 import { useAuthContext } from "./store/AuthContext";
@@ -13,7 +14,7 @@ const App = () => {
     const { isLoggedIn } = useAuthContext();
 
     return (
-        <>
+        <main>
             <Routes>
                 <Route path="/" element={<Navigation />}>
                     <Route index element={<Home />} />
@@ -22,6 +23,7 @@ const App = () => {
                         element={isLoggedIn ? <Profile /> : <Navigate to="/" />}
                     />
                     <Route path="/map" element={<Map />} />
+                    <Route path="/resources" element={<Resources />} />
                 </Route>
                 <Route
                     path="*"
@@ -33,7 +35,7 @@ const App = () => {
                     }
                 />
             </Routes>
-        </>
+        </main>
     );
 };
 
