@@ -33,8 +33,8 @@ const Home = () => {
             <div className="left__heading">
                 <h1>Hey there!</h1>
                 <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Doloribus eum excepturi
-                    tenetur.
+                    Time Chaser is a QR-code based time tracking website that keeps track of your
+                    own schedule and advocates for a healthier work-life balance for teachers. O
                 </p>
             </div>
             <form className="form" onSubmit={loginSubmitHandler}>
