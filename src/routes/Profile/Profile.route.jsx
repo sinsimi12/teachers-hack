@@ -18,7 +18,7 @@ const Profile = () => {
         <section className="profile">
             <aside className="left">
                 <div className="left__upper">
-                    <h1>
+                    <h1 className="heading-primary">
                         Lorem <span className="highlight">ipsum</span> dolor sit amet. Consectetur{" "}
                         <span className="highlight">adipisicing</span> elit. Ex, voluptate.
                     </h1>

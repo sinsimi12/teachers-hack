@@ -23,7 +23,10 @@ const App = () => {
                         element={isLoggedIn ? <Profile /> : <Navigate to="/" />}
                     />
                     <Route path="/map" element={<Map />} />
-                    <Route path="/resources" element={<Resources />} />
+                    <Route
+                        path="/resources"
+                        element={isLoggedIn ? <Resources /> : <Navigate to="/" />}
+                    />
                 </Route>
                 <Route
                     path="*"
