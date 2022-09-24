@@ -18,7 +18,7 @@ const Resources = () => {
             <div className="upper">
                 <div className="heading">
                     <p className="wish">
-                        {wish} <span className="highlight">{user.name}.</span>
+                        {wish} <span className="highlight">{user.name || "N/A"}.</span>
                     </p>
                     <div className="date">
                         <p>
