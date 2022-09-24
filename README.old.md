@@ -1,2 +1,0 @@
-# teachers-hack
-Hackathon Project
