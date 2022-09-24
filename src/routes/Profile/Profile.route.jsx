@@ -75,7 +75,7 @@ const Profile = () => {
                 <div className="left__actions">
                     <div className="heading">
                         <p className="wish">
-                            {wish} <span className="highlight">John</span>
+                            {wish} <span className="highlight">{user.name}.</span>
                         </p>
                         <div className="date">
                             <p>
