@@ -34,7 +34,7 @@ const Home = () => {
                 <h1>Hey there!</h1>
                 <p>
                     Time Chaser is a QR-code based time tracking website that keeps track of your
-                    own schedule and advocates for a healthier work-life balance for teachers. O
+                    own schedule and advocates for a healthier work-life balance for teachers. 
                 </p>
             </div>
             <form className="form" onSubmit={loginSubmitHandler}>
