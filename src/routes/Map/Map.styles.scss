@@ -1,0 +1,17 @@
+.map {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+
+  .leaflet-container {
+    width: 640px;
+    height: 640px;
+    border: 2px solid #e44e4f;
+  }
+}
+
+@media screen and (max-width: 639px) {
+  .leaflet-container {
+    width: 80vw;
+  }
+}
