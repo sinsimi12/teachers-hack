@@ -1,23 +1,41 @@
-import "./App.css";
+import React from "react";
+import { Routes, Route, Navigate } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+import Navigation from "./routes/Navigation/Navigation.route";
+import Home from "./routes/Home/Home.route";
+import Profile from "./routes/Profile/Profile.route";
+import Map from "./routes/Map/Map.route";
+import { useAuthContext } from "./store/AuthContext";
+
+const App = () => {
+    const { isLoggedIn } = useAuthContext();
+    console.log(isLoggedIn);
+
+    return (
+        <>
+            <Routes>
+                <Route path="/" element={<Navigation />}>
+                    <Route index element={<Home />} />
+                    <Route
+                        path="/profile"
+                        element={isLoggedIn ? <Profile /> : <Navigate to="/" />}
+                    />
+                    <Route path="/map" element={<Map />} />
+                </Route>
+                <Route
+                    path="*"
+                    element={
+                        <>
+                            <Navigation />
+                            <div style={{ padding: "2rem 5rem" }}>
+                                <p>404 - There is nothing here. </p>
+                            </div>
+                        </>
+                    }
+                />
+            </Routes>
+        </>
+    );
+};
 
 export default App;
