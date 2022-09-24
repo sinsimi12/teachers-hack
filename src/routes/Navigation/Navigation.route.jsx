@@ -48,11 +48,13 @@ const Navigation = () => {
                 </div>
 
                 <ul>
-                    <li>
-                        <Link to="resources" className="nav__link">
-                            Resources
-                        </Link>
-                    </li>
+                    {isLoggedIn && (
+                        <li>
+                            <Link to="resources" className="nav__link">
+                                Resources
+                            </Link>
+                        </li>
+                    )}
 
                     <li>
                         <Link to="" className="nav__link">
