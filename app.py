@@ -13,7 +13,7 @@ import psycopg2 # for database connection
 import db
 
 app = Flask(__name__)
-conn = psycopg2.connect("postgresql://chantal:xiXr56AQQTuedmwvGioyBQ@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?options=--cluster%3Dteacherhacks2-3291&sslmode=verify-full&sslrootcert=%2Fhome%2Fchantal%2F.postgresql%2Froot.crt")
+conn = psycopg2.connect("postgresql://chantal:xiXr56AQQTuedmwvGioyBQ@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dteacherhacks2-3291")
 
 # User register route
 @app.route('/register')

@@ -4,7 +4,7 @@ from socket import create_server
 
 import psycopg2
 
-conn = psycopg2.connect("postgresql://chantal:xiXr56AQQTuedmwvGioyBQ@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?options=--cluster%3Dteacherhacks2-3291&sslmode=verify-full&sslrootcert=%2Fhome%2Fchantal%2F.postgresql%2Froot.crt")
+conn = psycopg2.connect("postgresql://chantal:xiXr56AQQTuedmwvGioyBQ@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dteacherhacks2-3291")
 
 
 def user_info(conn):
@@ -110,3 +110,4 @@ def select_logs_by_id(userId, conn):
 # token(conn)
 
 # create_logs(timeIn='2022-03-24 04:05:06',timeOut='2022-03-24 04:05:08', userId=1 , createdAt='2022-03-24 04:05:08', updatedAt='2022-03-24 04:05:08', conn=conn)
+select_logs_by_id(userId=1, conn=conn)
