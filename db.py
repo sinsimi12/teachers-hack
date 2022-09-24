@@ -1,15 +1,16 @@
 
 import logging
+from socket import create_server
 
 import psycopg2
 
 conn = psycopg2.connect("postgresql://chantal:teachershack2@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?options=--cluster%3Dteacherhacks2-3291&sslmode=verify-full&sslrootcert=%2Fhome%2Fchantal%2F.postgresql%2Froot.crt")
 
 
-def user(conn):
+def user_info(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS user_info (id SERIAL NOT NULL PRIMARY KEY, userId INTEGER NOT NULL, first_name VARCHAR(100), last_name VARCHAR(100), email VARCHAR(100), schoolId INTEGER NOT NULL, createdAt DATE NOT NULL, updatedAt DATE NOT NULL)")
+             "CREATE TABLE IF NOT EXISTS user_info (id SERIAL NOT NULL PRIMARY KEY, userId INTEGER NOT NULL, first_name VARCHAR(100), last_name VARCHAR(100), email VARCHAR(100), schoolId INTEGER NOT NULL, createdAt TIMESTAMP NOT NULL, updatedAt TIMESTAMP NOT NULL)")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
@@ -21,7 +22,7 @@ def user(conn):
 def school(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS school ( id SERIAL NOT NULL PRIMARY KEY, latitude FLOAT NOT NULL, longitude FLOAT NOT NULL, createdAt DATE NOT NULL,updatedAt DATE NOT NULL)")
+             "CREATE TABLE IF NOT EXISTS school ( id SERIAL NOT NULL PRIMARY KEY, latitude FLOAT NOT NULL, longitude FLOAT NOT NULL, createdAt TIMESTAMP NOT NULL,updatedAt TIMESTAMP NOT NULL)")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
@@ -33,7 +34,7 @@ def school(conn):
 def logs(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS logs (id SERIAL NOT NULL PRIMARY KEY, userId INT NOT NULL, timeIn DATE NOT NULL, timeOut DATE NOT NULL, createdAt DATE NOT NULL, updatedAt DATE NOT NULL)")
+             "CREATE TABLE IF NOT EXISTS logs (id SERIAL NOT NULL PRIMARY KEY, userId INT NOT NULL, timeIn TIMESTAMP NOT NULL, timeOut TIMESTAMP NOT NULL, createdAt TIMESTAMP NOT NULL, updatedAt TIMESTAMP NOT NULL)")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
@@ -44,7 +45,7 @@ def logs(conn):
 def token(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS token (id SERIAL NOT NULL PRIMARY KEY, userId INTEGER NOT NULL, token VARCHAR(180) NOT NULL, createdAt DATE NOT NULL, updatedAt DATE NOT NULL)")
+             "CREATE TABLE IF NOT EXISTS token (id SERIAL NOT NULL PRIMARY KEY, userId INTEGER NOT NULL, token VARCHAR(180) NOT NULL, createdAt TIMESTAMP NOT NULL, updatedAt TIMESTAMP NOT NULL)")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
@@ -59,15 +60,54 @@ def token(conn):
 def phrase(conn):
     with conn.cursor() as cur:
         cur.execute(
-             "CREATE TABLE IF NOT EXISTS phrase ( id SERIAL NOT NULL PRIMARY KEY, school VARCHAR(100) NOT NULL, phrase VARCHAR(100) NOT NULL,  createdAt DATE NOT NULL, updatedAt DATE NOT NULL)")
+             "CREATE TABLE IF NOT EXISTS phrase ( id SERIAL NOT NULL PRIMARY KEY, school VARCHAR(100) NOT NULL, phrase VARCHAR(100) NOT NULL,  createdAt TIMESTAMP NOT NULL, updatedAt TIMESTAMP NOT NULL)")
       
         logging.debug("user_info(): status message: %s",
                       cur.statusmessage)
-       
 
 
-school(conn)
-logs(conn)
-user(conn)
-phrase(conn)
-token(conn)
+
+    conn.commit() 
+
+
+
+def create_logs(conn, timeIn, timeOut, userId, createdAt, updatedAt):
+    with conn.cursor() as cur:
+        cur.execute(
+              f"INSERT INTO logs (timeIn, timeOut, userId, createdAt, updatedAt) VALUES ('{timeIn}', '{timeOut}', '{userId}', '{createdAt}', '{updatedAt}')")
+      
+        logging.debug("user_info(): status message: %s",
+                      cur.statusmessage)
+
+
+    conn.commit() 
+
+
+
+def select_logs_by_id(userId, conn):
+    with conn.cursor() as cur:
+        cur.execute(
+              f"SELECT * FROM logs WHERE userId = '{userId}' ")
+      
+        logging.debug("user_info(): status message: %s",
+                      cur.statusmessage)
+
+        result = cur.fetchall()
+
+    
+        conn.commit() 
+        return result
+
+
+
+ 
+
+
+# school(conn)
+# logs(conn)
+# user_info(conn)
+# phrase(conn)
+# token(conn)
+
+# create_logs(timeIn='2022-03-24 04:05:06',timeOut='2022-03-24 04:05:08', userId=1 , createdAt='2022-03-24 04:05:08', updatedAt='2022-03-24 04:05:08', conn=conn)
+select_logs_by_id(userId=1, conn=conn)
