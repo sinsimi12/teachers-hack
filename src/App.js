@@ -7,11 +7,12 @@ import Profile from "./routes/Profile/Profile.route";
 import Map from "./routes/Map/Map.route";
 import Resources from "./routes/Resources/Resources.route";
 import PageNotFound from "./routes/404/PageNotFound.route";
+import Admin from "./routes/Admin/Admin.route";
 
 import { useAuthContext } from "./store/AuthContext";
 
 const App = () => {
-    const { isLoggedIn } = useAuthContext();
+    const { isLoggedIn, user } = useAuthContext();
 
     return (
         <main>
@@ -26,6 +27,12 @@ const App = () => {
                     <Route
                         path="/resources"
                         element={isLoggedIn ? <Resources /> : <Navigate to="/" />}
+                    />
+                    <Route
+                        path="/admin"
+                        element={
+                            isLoggedIn && user.role === "teacher" ? <Admin /> : <Navigate to="/" />
+                        }
                     />
                 </Route>
                 <Route

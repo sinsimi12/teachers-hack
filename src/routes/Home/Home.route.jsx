@@ -13,9 +13,8 @@ import { useRef } from "react";
 import LinkButton from "../../ui/LinkButton/LinkButton.component";
 
 const Home = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { login, isLoggedIn, loginStatus } = useAuthContext();
-
     const hasLoginStatus = Object.keys(loginStatus).length > 0;
 
     const emailRef = useRef();
@@ -26,9 +25,10 @@ const Home = () => {
         const email = emailRef.current?.value;
         const password = passwordRef.current?.value;
 
-        if (loginStatus.type !== "error") {
-            navigate("/resources");
-        }
+        // if (hasLoginStatus && loginStatus.type !== "error") {
+        //     console.log("qweqweqwe");
+        //     navigate("/resources");
+        // }
 
         login({ email, password });
     };

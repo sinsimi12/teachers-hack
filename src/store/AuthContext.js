@@ -1,4 +1,5 @@
-import { createContext, useContext, useState, useTransition } from "react";
+import { createContext, useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { v4 as uuidv4 } from "uuid";
 
@@ -7,7 +8,7 @@ const DUMMY_USERS = [
         id: uuidv4(),
         name: "Christian Mina",
         email: "mina.christian@xavier.edu",
-        position: "teacher",
+        role: "teacher",
         address: "123 Lourdes St. Aba Homes, 1870",
         phone: "+(033) 337-2172",
         password: "123456",
@@ -16,7 +17,7 @@ const DUMMY_USERS = [
         id: uuidv4(),
         name: "Jane Doe",
         email: "janedoe@test.edu",
-        position: "student",
+        role: "student",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
         password: "123456",
@@ -41,23 +42,27 @@ export const AuthContextProvider = props => {
     const [todaysLog, setTodaysLog] = useState({});
     const [loginStatus, setLoginStatus] = useState({});
 
+    const navigate = useNavigate();
+
     const loginHandler = user => {
         const { email, password } = user;
 
         // check if email exists
-        const currentUser = users.find(user => user.email === email.trim());
-        if (!currentUser) {
-            setLoginStatus({ type: "error", content: "Email doesn't exist." });
-            return;
-        }
+        const currentUser = users.find(user => user.email === email.trim()) || {};
+        // if (!currentUser) {
+        //     setLoginStatus({ type: "error", content: "Email doesn't exist." });
+        //     return;
+        // }
 
-        if (currentUser.password !== password.trim()) {
+        if (currentUser.email !== email && currentUser.password !== password.trim()) {
             setLoginStatus({ type: "error", content: "Incorrect email or password." });
             return;
         }
 
+        setLoginStatus({ type: "success", content: "Success." });
         setUser(currentUser);
         setIsLoggedIn(true);
+        navigate("/resources");
     };
 
     const logoutHandler = () => {

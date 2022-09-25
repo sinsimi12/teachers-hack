@@ -12,7 +12,7 @@ import "./Navigation.styles.scss";
 
 const Navigation = () => {
     const { user, isLoggedIn } = useAuthContext();
-    const { name, email, address, phone } = user;
+    const { name, role } = user;
 
     const dropdownRef = useRef(null);
     const buttonRef = useRef(null);
@@ -53,7 +53,7 @@ const Navigation = () => {
                 </div>
 
                 <ul>
-                    {isLoggedIn && (
+                    {isLoggedIn && role === "teacher" && (
                         <li>
                             <NavLink to="admin" className="nav__link">
                                 {({ isActive }) => (
