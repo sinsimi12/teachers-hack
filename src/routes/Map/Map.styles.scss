@@ -2,11 +2,29 @@
   width: 100%;
   display: flex;
   justify-content: center;
+  gap: 24px;
 
   .leaflet-container {
-    width: 640px;
-    height: 640px;
+    width: 1000px;
+    height: 720px;
     border: 2px solid #e44e4f;
+  }
+
+  .legend {
+    display: flex;
+    gap: 24px;
+    .legend-scale {
+      .legend-block {
+        width: 28px;
+        height: 36px;
+      }
+    }
+    .legend-label {
+      height: 540px;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
   }
 }
 
