@@ -6,15 +6,19 @@
 
 ## 💡 Inspiration 💡
 
-We believe that animals all over the world deserve to have a warm, loving home. It is our mission that we promote and connect people to animals by creating a community of love and care. Each year, it's estimated that more than one million adoptable dogs and cats are euthanized in the United States, simply because too many pets come into shelters and too few people consider adoption when looking for a pet. We believe that we, as a community, can help lead this cause and help prevent cases of euthanization.
+We believe that teachers are the pillars of our society and pave the way for the next generation to thrive and grow. Even though they play such a huge role in the development of a successful community, they are often overworked, underpaid and treated unfairly. This led us to address the issue of exploited teachers and raise awareness for this global problem.
 
 ## ⚙ What it does ⚙
 
-Animal providers can upload animal information. There are many people like these who found injured/lost animals and hope for others to adopt them. They can use recommended third-party apps like PhotoCatch to convert video to 3D models in seconds. Users looking for animals to adopt can view a list of animals available, and can use the iOS app to view the animal in 3D Augmented Reality (AR) to see if the animal is a good fit. If users do decide to adopt these “unwanted” animals, they get a code to redeem NFTs. They will be messaged by our app through iMessage on their code. Users are therefore incentivized to adopt these animals. We get these NFTs from Non-Profit Organizations that want to contribute to our cause.
+Time Chase is a QR code-based time tracking website that keeps track of your own schedule and advocates for a healthier work-life balance for teachers.
+
+We use QR codes to verify the time-ins and time-outs of our users. This is integral for us as this lets us add another layer of security to the process, promote transparency between the school and the teacher, and makes it convenient for them to log their times. We also added a virtual map with markers with differing colors that signify the average number of hours per marker with green markers being the least overworked and red markers being the most overworked academic institutions.
+
+This data helps us arrive at conclusions on which schools have the highest density of overworked teachers and can serve as a stepping stone to better equip leaders to make more inclusive decisions.
 
 ## 🏗 How we built it 🏗
 
-The front end for the web app was done in Tailwind and React, while the storage of information was used in both a CockroachDB database (user information) and in the blockchain using Solidity and Hedera (adoption information). The iOS app was done in SwiftUI and RealityKit + ARKit. Uploaded 3D images get stored on our Echo3D account and are fetched from Echo3D in the iOS app.
+We developed the application with love using the React library for the frontend, and the Flask framework for the backend. Additionally, we used CockroachDB as our database to store information such as the logs and passphrases, Psycopg2 library as an adapter to connect to it and Twilio to send confirmation SMS.
 
 ## Installation
 
