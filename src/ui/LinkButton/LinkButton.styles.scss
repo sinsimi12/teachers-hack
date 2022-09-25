@@ -1,7 +1,7 @@
 .link-btn {
     background: #e44e4f;
     color: #fff;
-    padding: 0.7rem 1.65rem;
+    padding: 0.85rem 1.65rem;
     border-radius: 1rem;
     display: flex;
     align-items: center;
@@ -9,6 +9,8 @@
     width: fit-content;
     gap: 0.5rem;
     transition: all 0.2s ease-in-out;
+    border: transparent;
+    font-size: 1.05rem;
 
     svg {
         transition: all 0.2s ease-in-out;
