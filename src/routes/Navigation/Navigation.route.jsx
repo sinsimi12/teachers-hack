@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, Outlet, Navigate } from "react-router-dom";
+import { NavLink, Link, Outlet, Navigate } from "react-router-dom";
 
 import { FaUserCircle } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
@@ -55,22 +55,38 @@ const Navigation = () => {
                 <ul>
                     {isLoggedIn && (
                         <li>
-                            <Link to="resources" className="nav__link">
-                                Resources
-                            </Link>
+                            <NavLink to="admin" className="nav__link">
+                                {({ isActive }) => (
+                                    <span className={isActive ? "active" : ""}>Dashboard</span>
+                                )}
+                            </NavLink>
                         </li>
                     )}
 
-                    <li>
-                        <Link to="" className="nav__link">
-                            About
-                        </Link>
-                    </li>
+                    {isLoggedIn && (
+                        <li>
+                            <NavLink to="/resources" className="nav__link">
+                                {({ isActive }) => (
+                                    <span className={isActive ? "active" : ""}>Resources</span>
+                                )}
+                            </NavLink>
+                        </li>
+                    )}
+
+                    {/* <li>
+                        <NavLink to="" className="nav__link">
+                            {({ isActive }) => (
+                                <span className={isActive ? "active" : ""}>About</span>
+                            )}
+                        </NavLink>
+                    </li> */}
 
                     <li>
-                        <Link to="map" className="nav__link">
-                            Map
-                        </Link>
+                        <NavLink to="map" className="nav__link">
+                            {({ isActive }) => (
+                                <span className={isActive ? "active" : ""}>Map</span>
+                            )}
+                        </NavLink>
                     </li>
 
                     {isLoggedIn && (
