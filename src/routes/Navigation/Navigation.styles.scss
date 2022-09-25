@@ -29,12 +29,18 @@
     }
 
     &__link {
-        font-weight: 500;
-        font-size: 1.05rem;
-        display: flex;
-        align-items: center;
-        text-transform: lowercase;
-        letter-spacing: 2px;
+        span {
+            font-weight: 500;
+            font-size: 1.05rem;
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            letter-spacing: 2px;
+
+            &.active {
+                color: #e44e4f;
+            }
+        }
 
         &:hover {
             color: #e44e4f;
