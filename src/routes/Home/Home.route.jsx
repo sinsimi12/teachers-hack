@@ -86,7 +86,7 @@ const Home = () => {
                     in myself. I wouldn't be where I am without you.
                 </p>
 
-                <LinkButton route="/map" />
+                <LinkButton route="/map" text="Learn More" />
             </div>
         </>
     );
