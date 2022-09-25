@@ -21,7 +21,7 @@ const SecretPhrase = () => {
 
     const generatePhraseHandler = () => {
         setShowCopyMessage(false);
-        setSecretPhrase(uuidv4());
+        setSecretPhrase(uuidv4() + "-" + uuidv4());
     };
 
     return (

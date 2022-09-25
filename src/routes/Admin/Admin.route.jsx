@@ -5,21 +5,25 @@ import { useAuthContext } from "../../store/AuthContext";
 import SecretPhrase from "./SecretPhrase/SecretPhrase.component";
 
 import "./Admin.styles.scss";
+import Teachers from "./Teachers/Teachers.component";
+import Students from "./Students/Students.component";
 
 const Admin = () => {
     const { user } = useAuthContext();
     const { name } = user;
 
-    const [selectedCategory, setSelectedCategory] = useState("phrase");
+    const [selectedCategory, setSelectedCategory] = useState("students");
 
     const clickCategoryHandler = category => {
         setSelectedCategory(category);
     };
 
-    let contentToShow;
+    let contentToShow = <Students />;
 
     if (selectedCategory === "phrase") {
         contentToShow = <SecretPhrase />;
+    } else if (selectedCategory === "teachers") {
+        contentToShow = <Teachers />;
     }
 
     return (

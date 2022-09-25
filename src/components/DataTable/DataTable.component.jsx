@@ -9,7 +9,7 @@ import { HiOutlineChevronRight } from "react-icons/hi";
 
 import "./DataTable.styles.scss";
 
-const DataTable = ({ logs, onFilterBySearch, Table }) => {
+const DataTable = ({ logs, onFilterBySearch, Table, userRole }) => {
     const productsCopy = [...logs];
     const chunkData = chunkArray(productsCopy, 5);
 
@@ -85,7 +85,7 @@ const DataTable = ({ logs, onFilterBySearch, Table }) => {
     if (productsToDisplay?.length > 0) {
         dataToShow = (
             <>
-                <Table dataToDisplay={productsToDisplay} />
+                <Table dataToDisplay={productsToDisplay} userRole={userRole} />
                 <div className="pagination">
                     {productsToDisplay?.length > 0 && (
                         <>
@@ -112,16 +112,18 @@ const DataTable = ({ logs, onFilterBySearch, Table }) => {
     return (
         <article className="data-table">
             <div className="main-content">
-                { <div className="main-content__upper">
-                    <div className="search">
-                        <BiSearchAlt2 />
-                        <input
-                            type="text"
-                            placeholder="Filter by userID"
-                            onChange={searchChangeHandler}
-                        />
+                {
+                    <div className="main-content__upper">
+                        <div className="search">
+                            <BiSearchAlt2 />
+                            <input
+                                type="text"
+                                placeholder="Filter by userID"
+                                onChange={searchChangeHandler}
+                            />
+                        </div>
                     </div>
-                </div>}
+                }
 
                 {dataToShow}
             </div>
