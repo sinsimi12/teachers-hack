@@ -5,7 +5,7 @@ import Navigation from "./routes/Navigation/Navigation.route";
 import Home from "./routes/Home/Home.route";
 import Profile from "./routes/Profile/Profile.route";
 import Map from "./routes/Map/Map.route";
-import Resources from "./routes/Resources/Resources.route";
+import Schedule from "./routes/Schedule/Schedule.route";
 import PageNotFound from "./routes/404/PageNotFound.route";
 import Admin from "./routes/Admin/Admin.route";
 
@@ -25,8 +25,8 @@ const App = () => {
                     />
                     <Route path="/map" element={<Map />} />
                     <Route
-                        path="/resources"
-                        element={isLoggedIn ? <Resources /> : <Navigate to="/" />}
+                        path="/schedule"
+                        element={isLoggedIn ? <Schedule /> : <Navigate to="/" />}
                     />
                     <Route
                         path="/admin"

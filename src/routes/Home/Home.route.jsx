@@ -25,11 +25,6 @@ const Home = () => {
         const email = emailRef.current?.value;
         const password = passwordRef.current?.value;
 
-        // if (hasLoginStatus && loginStatus.type !== "error") {
-        //     console.log("qweqweqwe");
-        //     navigate("/resources");
-        // }
-
         login({ email, password });
     };
 

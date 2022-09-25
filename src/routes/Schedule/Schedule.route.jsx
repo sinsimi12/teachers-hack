@@ -9,9 +9,9 @@ import { useDate } from "../../hooks/useDate.hook";
 
 import { useAuthContext } from "../../store/AuthContext";
 
-import "./Resources.styles.scss";
+import "./Schedule.styles.scss";
 import DataTable from "../../components/DataTable/DataTable.component";
-import ResourcesTable from "./ResourcesTable/ResourcesTable.component";
+import ScheduleTable from "./ScheduleTable/ScheduleTable.component";
 
 const DUMMY_LOGS = [
     {
@@ -209,11 +209,9 @@ const DUMMY_LOGS = [
     },
 ];
 
-const Resources = () => {
+const Schedule = () => {
     const { user, todaysLog, setTodaysLog } = useAuthContext();
     const { date, time: displayTime, wish } = useDate();
-
-    console.log(user);
 
     const [logs, setLogs] = useState(DUMMY_LOGS);
 
@@ -344,7 +342,7 @@ const Resources = () => {
     }, [timeIn, timeOut]);
 
     return (
-        <section className="resources">
+        <section className="schedule">
             <div className="upper">
                 <div className="heading">
                     <p className="wish">
@@ -377,10 +375,10 @@ const Resources = () => {
             <DataTable
                 logs={logs}
                 // onFilterBySearch={filterBySearchHandler}
-                Table={ResourcesTable}
+                Table={ScheduleTable}
             />
         </section>
     );
 };
 
-export default Resources;
+export default Schedule;

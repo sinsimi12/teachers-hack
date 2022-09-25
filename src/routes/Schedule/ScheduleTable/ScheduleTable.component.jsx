@@ -1,8 +1,8 @@
 import React from "react";
 
-import "./ResourcesTable.styles.scss";
+import "./ScheduleTable.styles.scss";
 
-const ResourcesTable = ({ dataToDisplay }) => {
+const ScheduleTable = ({ dataToDisplay }) => {
     return (
         <table className="data-logs">
             <thead>
@@ -37,4 +37,4 @@ const ResourcesTable = ({ dataToDisplay }) => {
     );
 };
 
-export default ResourcesTable;
+export default ScheduleTable;

@@ -65,9 +65,9 @@ const Navigation = () => {
 
                     {isLoggedIn && (
                         <li>
-                            <NavLink to="/resources" className="nav__link">
+                            <NavLink to="/schedule" className="nav__link">
                                 {({ isActive }) => (
-                                    <span className={isActive ? "active" : ""}>Resources</span>
+                                    <span className={isActive ? "active" : ""}>Schedule</span>
                                 )}
                             </NavLink>
                         </li>

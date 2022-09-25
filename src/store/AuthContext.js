@@ -25,7 +25,7 @@ const DUMMY_USERS = [
     {
         id: uuidv4(),
         name: "Ron Brewer",
-        email: "janedoe@test.edu",
+        email: "ronbrewer@test.edu",
         role: "teacher",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
@@ -34,7 +34,7 @@ const DUMMY_USERS = [
     {
         id: uuidv4(),
         name: "John Wick",
-        email: "janedoe@test.edu",
+        email: "johnwick@test.edu",
         role: "teacher",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
@@ -43,7 +43,7 @@ const DUMMY_USERS = [
     {
         id: uuidv4(),
         name: "Sarah Ford",
-        email: "janedoe@test.edu",
+        email: "sarahford@test.edu",
         role: "teacher",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
@@ -52,7 +52,7 @@ const DUMMY_USERS = [
     {
         id: uuidv4(),
         name: "Bar Joe",
-        email: "janedoe@test.edu",
+        email: "barjoe@test.edu",
         role: "teacher",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
@@ -61,7 +61,7 @@ const DUMMY_USERS = [
     {
         id: uuidv4(),
         name: "Nat Brad",
-        email: "janedoe@test.edu",
+        email: "natbrad@test.edu",
         role: "teacher",
         address: "123 Phoenix Building Recoleto Street1000",
         phone: "+(052) 347-2322",
@@ -107,7 +107,7 @@ export const AuthContextProvider = props => {
         setLoginStatus({ type: "success", content: "Success." });
         setUser(currentUser);
         setIsLoggedIn(true);
-        navigate("/resources");
+        navigate("/schedule");
     };
 
     const logoutHandler = () => {
