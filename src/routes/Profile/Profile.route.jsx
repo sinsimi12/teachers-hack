@@ -12,14 +12,15 @@ import { useAuthContext } from "../../store/AuthContext";
 
 const Profile = () => {
     const { user } = useAuthContext();
-    const { name, email, address, phone } = user;
+    const { name, role, email, address, phone } = user;
 
     return (
         <section className="profile">
             <aside className="left">
                 <div className="left__upper">
                     <h1 className="heading-primary">
-                        Hi <span className="highlight">Christian!</span> <br />
+                        Hi <span className="highlight">{name?.split(" ")[0]}</span>!
+                        <br />
                         Welcome to Xavier University.
                         {/* <span className="highlight"> Check </span> our website university. */}
                     </h1>
@@ -32,8 +33,8 @@ const Profile = () => {
                             <FaUserAlt />
                         </div>
                         <div className="control__texts">
-                            <p className="label">Name</p>
-                            <div className="value">{name || "N/A"}</div>
+                            <p className="label">Role</p>
+                            <div className="value role">{role || "N/A"}</div>
                         </div>
                     </div>
 
