@@ -75,11 +75,11 @@ const DataTable = ({ logs, onFilterBySearch, Table, userRole }) => {
         );
     });
 
-    const searchChangeHandler = e => {
-        const inputValue = e.target.value.trim().toLowerCase();
-        const filteredData = onFilterBySearch(chunkData[currentPageIndex - 1], inputValue);
-        setProductsToDisplay(filteredData);
-    };
+    // const searchChangeHandler = e => {
+    //     const inputValue = e.target.value.trim().toLowerCase();
+    //     const filteredData = onFilterBySearch(chunkData[currentPageIndex - 1], inputValue);
+    //     setProductsToDisplay(filteredData);
+    // };
 
     let dataToShow;
     if (productsToDisplay?.length > 0) {
@@ -112,8 +112,7 @@ const DataTable = ({ logs, onFilterBySearch, Table, userRole }) => {
     return (
         <article className="data-table">
             <div className="main-content">
-                {
-                    <div className="main-content__upper">
+                {/* <div className="main-content__upper">
                         <div className="search">
                             <BiSearchAlt2 />
                             <input
@@ -122,11 +121,9 @@ const DataTable = ({ logs, onFilterBySearch, Table, userRole }) => {
                                 onChange={searchChangeHandler}
                             />
                         </div>
-                    </div>
-                }
-
-                {dataToShow}
+                    </div> */}
             </div>
+            {dataToShow}
         </article>
     );
 };

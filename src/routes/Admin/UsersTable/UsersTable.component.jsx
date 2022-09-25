@@ -22,8 +22,9 @@ const UsersTable = ({ dataToDisplay, userRole }) => {
 
                     if (userRole === role) {
                         return (
-                            <tr key={name}>
-                                <td>{`${id.slice(0, 10)}...`}</td>
+                            <tr key={id}>
+                                {/* <td>{`${id.slice(0, 10)}...`}</td> */}
+                                <td>{index}</td>
                                 <td>
                                     <strong>{name}</strong>{" "}
                                 </td>

@@ -53,7 +53,7 @@ const Navigation = () => {
                 </div>
 
                 <ul>
-                    {isLoggedIn && role === "teacher" && (
+                    {isLoggedIn && role === "admin" && (
                         <li>
                             <NavLink to="admin" className="nav__link">
                                 {({ isActive }) => (

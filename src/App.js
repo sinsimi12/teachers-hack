@@ -31,7 +31,7 @@ const App = () => {
                     <Route
                         path="/admin"
                         element={
-                            isLoggedIn && user.role === "teacher" ? <Admin /> : <Navigate to="/" />
+                            isLoggedIn && user.role === "admin" ? <Admin /> : <Navigate to="/" />
                         }
                     />
                 </Route>

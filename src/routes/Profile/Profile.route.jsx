@@ -28,7 +28,7 @@ const Profile = () => {
                 </div>
 
                 <div className="left__user-info">
-                    <div className="control">
+                    {/* <div className="control">
                         <div className="control__icon user">
                             <FaUserAlt />
                         </div>
@@ -36,7 +36,7 @@ const Profile = () => {
                             <p className="label">Role</p>
                             <div className="value role">{role || "N/A"}</div>
                         </div>
-                    </div>
+                    </div> */}
 
                     <div className="control">
                         <div className="control__icon">

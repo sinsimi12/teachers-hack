@@ -12,13 +12,13 @@ const Admin = () => {
     const { user } = useAuthContext();
     const { name } = user;
 
-    const [selectedCategory, setSelectedCategory] = useState("students");
+    const [selectedCategory, setSelectedCategory] = useState("teachers");
 
     const clickCategoryHandler = category => {
         setSelectedCategory(category);
     };
 
-    let contentToShow = <Students />;
+    let contentToShow;
 
     if (selectedCategory === "phrase") {
         contentToShow = <SecretPhrase />;
@@ -28,16 +28,16 @@ const Admin = () => {
 
     return (
         <section className="admin-dashboard">
-            <h1 className="heading-primary">👋 Hi, {name ? name.split(" ")[0] : "N/A"}!</h1>
+            <h1 className="heading-primary">Admin Dashboard</h1>
 
             <nav>
                 <ul>
-                    <li
+                    {/* <li
                         className={selectedCategory === "students" ? "active" : ""}
                         onClick={() => clickCategoryHandler("students")}
                     >
                         Students
-                    </li>
+                    </li> */}
                     <li
                         className={selectedCategory === "teachers" ? "active" : ""}
                         onClick={() => clickCategoryHandler("teachers")}
