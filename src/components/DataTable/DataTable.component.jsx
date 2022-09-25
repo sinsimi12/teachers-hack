@@ -117,7 +117,7 @@ const DataTable = ({ logs, onFilterBySearch, Table }) => {
                         <BiSearchAlt2 />
                         <input
                             type="text"
-                            placeholder="Filter by value"
+                            placeholder="Filter by userID"
                             onChange={searchChangeHandler}
                         />
                     </div>
