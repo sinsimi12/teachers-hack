@@ -7,17 +7,17 @@ import "./styles/typography.scss";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-import { BrowserRouter } from "react-router-dom";
+import { HashRouter as Router } from "react-router-dom";
 
 import { AuthContextProvider } from "./store/AuthContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <BrowserRouter>
+    <Router>
         <AuthContextProvider>
             <App />
         </AuthContextProvider>
-    </BrowserRouter>
+    </Router>
 );
 
 // If you want to start measuring performance in your app, pass a function
