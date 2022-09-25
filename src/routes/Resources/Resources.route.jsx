@@ -213,6 +213,8 @@ const Resources = () => {
     const { user, todaysLog, setTodaysLog } = useAuthContext();
     const { date, time: displayTime, wish } = useDate();
 
+    console.log(user);
+
     const [logs, setLogs] = useState(DUMMY_LOGS);
 
     const [message, setMessage] = useState({});

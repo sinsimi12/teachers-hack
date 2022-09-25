@@ -5,8 +5,8 @@ import { v4 as uuidv4 } from "uuid";
 const DUMMY_USERS = [
     {
         id: uuidv4(),
-        name: "John Smith",
-        email: "johnsmith@xavier.edu",
+        name: "Christian Mina",
+        email: "mina.christian@xavier.edu",
         position: "teacher",
         address: "123 Lourdes St. Aba Homes, 1870",
         phone: "+(033) 337-2172",
@@ -56,7 +56,7 @@ export const AuthContextProvider = props => {
             return;
         }
 
-        setUser(user);
+        setUser(currentUser);
         setIsLoggedIn(true);
     };
 

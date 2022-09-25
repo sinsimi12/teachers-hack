@@ -51,7 +51,7 @@ const Home = () => {
                     <MdAlternateEmail />
                     <input
                         type="email"
-                        defaultValue="johnsmith@xavier.edu"
+                        defaultValue="mina.christian@xavier.edu"
                         ref={emailRef}
                         required
                         placeholder="Email Address"

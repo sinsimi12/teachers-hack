@@ -19,12 +19,11 @@ const Profile = () => {
             <aside className="left">
                 <div className="left__upper">
                     <h1 className="heading-primary">
-                        Hi <span className="highlight">Christian!</span> Welcome to Xavier University{" "}
-                        <span className="highlight"> Check </span> our website university.
+                        Hi <span className="highlight">Christian!</span> <br />
+                        Welcome to Xavier University.
+                        {/* <span className="highlight"> Check </span> our website university. */}
                     </h1>
-                    <p>
-                        If you have any questions, kindly send us a feedback.
-                    </p>
+                    <p>If you have any questions, kindly send us a feedback.</p>
                 </div>
 
                 <div className="left__user-info">
