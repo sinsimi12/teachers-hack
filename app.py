@@ -12,6 +12,13 @@ import hashlib # included in Python library, no need to install
 import psycopg2 # for database connection
 import db
 
+from twilio.rest import Client
+
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 app = Flask(__name__)
 conn = psycopg2.connect("postgresql://chantal:xiXr56AQQTuedmwvGioyBQ@free-tier6.gcp-asia-southeast1.cockroachlabs.cloud:26257/defaultdb?sslmode=verify-full&options=--cluster%3Dteacherhacks2-3291")
 
@@ -82,9 +89,22 @@ def get_teachers_by_school(school):
 def get_stats():
     return
 
+def send_msg(body):
+    account_sid = os.getenv('TWILIO_ACCOUNT_SID')
+    auth_token = os.getenv('TWILIO_AUTH_TOKEN')
+    client = Client(account_sid, auth_token) 
 
-
+    message = client.messages.create(
+        body='Hi Christian! You have successfully logged in to Time Chaser, 2022-09-25 11:51:06',
+        from_='+14752550870',
+        to='+639452755802'
+    )
     
+    print(message.sid)
+
+
+
+send_msg('');
 
 
 
