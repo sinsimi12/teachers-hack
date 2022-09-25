@@ -112,7 +112,7 @@ const DataTable = ({ logs, onFilterBySearch, Table }) => {
     return (
         <article className="data-table">
             <div className="main-content">
-                {/* <div className="main-content__upper">
+                { <div className="main-content__upper">
                     <div className="search">
                         <BiSearchAlt2 />
                         <input
@@ -121,7 +121,7 @@ const DataTable = ({ logs, onFilterBySearch, Table }) => {
                             onChange={searchChangeHandler}
                         />
                     </div>
-                </div> */}
+                </div>}
 
                 {dataToShow}
             </div>
