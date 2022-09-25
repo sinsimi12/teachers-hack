@@ -5,12 +5,17 @@ import { BsArrowRight } from "react-icons/bs";
 
 import "./LinkButton.styles.scss";
 
-const LinkButton = ({ route }) => {
-    return (
+const LinkButton = ({ route, text }) => {
+    return route ? (
         <Link to={route} className="link-btn">
-            <span>Learn More</span>
+            <span>{text}</span>
             <BsArrowRight />
         </Link>
+    ) : (
+        <button className="link-btn">
+            <span>{text}</span>
+            <BsArrowRight />
+        </button>
     );
 };
 
