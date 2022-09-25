@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
-import { MapContainer, TileLayer, Marker, CircleMarker } from 'react-leaflet'
+import { MapContainer, TileLayer, CircleMarker } from 'react-leaflet'
 import "./Map.styles.scss"
+import { schools } from "./Schools"
 
 const Map = () => {
 
@@ -15,6 +16,19 @@ const Map = () => {
         head.appendChild(link)
     })
 
+    const markers = schools.map((school) =>
+        <CircleMarker
+            key={school.key}
+            center={school.center}
+            radius={school.radius}
+            pathOptions={{ color: school.color }}
+        />
+    )
+
+    const legendBlock = schools.map((school) =>
+        <div className="legend-block" style={{ backgroundColor: school.color }}></div>
+    )
+
     return (
         <div class="map">
             <MapContainer center={[14.593819, 120.992302]} zoom={6}>
@@ -22,18 +36,17 @@ const Map = () => {
                     attribution="&copy; <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a> contributors"
                     url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
                 />
-                <CircleMarker
-                    center={[7.072316, 125.612838]}
-                    radius={50}
-                    pathOptions={{ color: '#08228d' }}
-                />
-                <CircleMarker
-                    center={[14.5636328, 120.9946436]}
-                    radius={50}
-                    pathOptions={{ color: '#467537' }}
-                />
-
+                {markers}
             </MapContainer>
+            <div className="legend">
+                <div className="legend-scale">
+                    {legendBlock}
+                </div>
+                <div className="legend-label">
+                    <div className="legend-max">More overworked</div>
+                    <div className="legend-min">Less overworked</div>
+                </div>
+            </div>
         </div>
     );
 };
