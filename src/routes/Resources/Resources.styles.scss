@@ -1,5 +1,5 @@
 .resources {
-    margin-top: 3rem;
+    padding: 3rem 7rem;
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -26,7 +26,8 @@
             }
 
             .wish {
-                font-size: 1.15rem;
+                font-size: 1.25rem;
+                margin-bottom: 0.5rem;
             }
 
             .date {
@@ -42,36 +43,62 @@
         }
     }
 
-    button {
-        &:first-child {
-            margin-right: 1.25rem;
-        }
+    .actions {
+        button {
+            &:first-child {
+                margin-right: 1.25rem;
+            }
 
-        border: 1px solid #333;
-        border-radius: 0.5rem;
-        padding: 0.72rem 1.8rem;
-        font-size: 1.05rem;
-        font-weight: 500;
-        transition: all 0.15s ease-in-out;
-        background: #fff;
+            &:disabled {
+                background: gray !important;
+                pointer-events: none;
+                color: #fff;
+                border-color: transparent;
+            }
 
-        &:hover {
-            border-color: transparent;
-            background-color: #e44e4f;
-            color: #fff;
-        }
-
-        &.filled {
-            border-color: transparent;
-            background-color: #e44e4f;
-            color: #fff;
+            border: 1px solid #333;
+            border-radius: 0.5rem;
+            padding: 0.72rem 1.8rem;
+            font-size: 1.05rem;
+            font-weight: 500;
+            transition: all 0.15s ease-in-out;
+            background: #fff;
 
             &:hover {
-                color: #000;
-                filter: brightness(1.1);
-                background: none;
-                border-color: #333;
+                border-color: transparent;
+                background-color: #e44e4f;
+                color: #fff;
             }
+
+            &.filled {
+                border-color: transparent;
+                background-color: #e44e4f;
+                color: #fff;
+
+                &:hover {
+                    color: #000;
+                    filter: brightness(1.1);
+                    background: none;
+                    border-color: #333;
+                }
+            }
+        }
+    }
+
+    .message {
+        font-size: 1.35rem;
+        opacity: 0;
+
+        &.show {
+            opacity: 1;
+        }
+
+        &.success {
+            color: #29926d;
+        }
+
+        &.failed {
+            color: red;
         }
     }
 }

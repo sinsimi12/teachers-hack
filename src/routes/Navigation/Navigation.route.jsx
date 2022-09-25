@@ -4,8 +4,11 @@ import { Link, Outlet, Navigate } from "react-router-dom";
 import { FaUserCircle } from "react-icons/fa";
 import { BiChevronDown } from "react-icons/bi";
 
-import "./Navigation.styles.scss";
 import { useAuthContext } from "../../store/AuthContext";
+
+import tcLogoNew from "../../assets/tc_logo_new.png";
+
+import "./Navigation.styles.scss";
 
 const Navigation = () => {
     const { user, isLoggedIn } = useAuthContext();
@@ -44,7 +47,9 @@ const Navigation = () => {
         <>
             <nav className="nav">
                 <div className="nav__logo">
-                    <Link to="/">logo</Link>
+                    <Link to="/">
+                        <img src={tcLogoNew} alt="" />
+                    </Link>
                 </div>
 
                 <ul>

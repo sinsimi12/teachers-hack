@@ -4,25 +4,17 @@ import { v4 as uuidv4 } from "uuid";
 
 const AuthContext = createContext({
     user: {},
+    todaysLog: {},
     token: "",
     isLoggedIn: false,
     login: token => {},
     logout: () => {},
 });
 
-// const DUMMY_USERS = [
-//     {
-//         id: uuidv4(),
-//         email: "johndoe@school.edu",
-//         password: "qwerty",
-//         address: "311 Kirkland Ave. Oconomowoc, WI 53066",
-//         phone: "123 456 789",
-//     },
-// ];
-
 export const AuthContextProvider = props => {
     const [user, setUser] = useState({ email: "", password: "", phone: "", address: "" });
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [todaysLog, setTodaysLog] = useState({});
 
     const loginHandler = user => {
         // const { uid, email, password } = user;
@@ -35,12 +27,18 @@ export const AuthContextProvider = props => {
         setIsLoggedIn(false);
     };
 
+    const setTodaysLogHandler = data => {
+        setTodaysLog(data);
+    };
+
     const contextValue = {
         user,
         // token,
         isLoggedIn,
         login: loginHandler,
         logout: logoutHandler,
+        todaysLog,
+        setTodaysLog: setTodaysLogHandler,
     };
 
     return <AuthContext.Provider value={contextValue}>{props.children}</AuthContext.Provider>;
